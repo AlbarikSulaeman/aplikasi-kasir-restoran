@@ -25,10 +25,18 @@ Route::get('/', function () {
 Route::get('logout', [LoginController::class, 'logout']);
 Route::get('login', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'authanticate']);
-Route::resource('register', RegisterController::class);
+
+
+Route::get('register', [RegisterController::class, 'index']);
+Route::get('register/create', [RegisterController::class, 'create']);
+Route::post('register/create', [RegisterController::class, 'store']);
+Route::get('register/edit/{id}', [RegisterController::class, 'edit']);
+Route::post('register/edit/{id}', [RegisterController::class, 'update']);
+Route::delete('register/delete/{id}', [RegisterController::class, 'destroy']);
+
 Route::resource('menu', MenuController::class);
 Route::resource('transaksi', TransaksiController::class);
-Route::get('laporan', [TransaksiController::class, 'index']);
+Route::get('laporan', [TransaksiController::class, 'show']);
 Route::get('/pdf', [PdfController::class, 'print']);
 
 

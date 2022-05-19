@@ -66,7 +66,7 @@ class RegisterController extends Controller
         return redirect('/login');
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $validateData = $request->validate([
             'name' => 'required',
@@ -76,16 +76,18 @@ class RegisterController extends Controller
         ]);
 
         $validateData['password'] = bcrypt($validateData['password']);
+        $user = User::find($id);
         $user->update($validateData);
 
-        return redirect()->route('register.index')
+        return redirect('/register')
         ->with('success', 'Berhasil Update !');
     }
     
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return redirect()->route('register.index')
-                        ->with('success','Berhasil Hapus !');
+        User::destroy($id);
+        
+        return redirect('/register')
+        ->with('success','Berhasil Hapus !');
     }
 }

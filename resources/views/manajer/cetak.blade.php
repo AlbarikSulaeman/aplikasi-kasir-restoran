@@ -5,6 +5,7 @@ table {
   text-shadow: 1px 1px 0px #fff;
   background: #eaebec;
   border: #ccc 1px solid;
+
 }
 
 table th {
@@ -12,6 +13,7 @@ table th {
   border-left:1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   background: #ededed;
+  font-size: 14px;
 }
 
 
@@ -22,13 +24,14 @@ table tr {
 
 
 table td {
-  padding: 15px 20px;
+  padding: 15px 25px;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
   background: #fafafa;
   background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
   background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+  font-size: 10px;
 }
 
 table tr:last-child td {
@@ -70,7 +73,7 @@ table tr:hover td {
             <td>{{ $transaksis->nama_pelanggan }}</td>
             <td>{{ $transaksis->nama_menu }}</td>
             <td>{{ $transaksis->jumlah }}</td>
-            <td>{{ $transaksis->total_harga }}</td>
+            <td>RP.{{ $transaksis->total_harga }}</td>
             <td>{{ $transaksis->nama_pegawai }}</td>
             <td>{{ $transaksis->created_at }}</td>
         </tr>

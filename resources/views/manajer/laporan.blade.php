@@ -15,6 +15,14 @@
                 <a class="btn btn-success" target="_blank" href="/pdf"> Cetak PDF</a>
             </div>
         </div>
+        <div class="col-lg-12 margin-tb">
+           <form action="/laporan" method="get">
+            <div class="input-group mb-3">
+                <input type="date" class="form-control" name="start_date">
+                <input type="date" class="form-control" name="end_date">
+                <button class="btn btn-success" type="submit">Cari</button>
+            </div>
+        </div>
     </div>
     <br>
 <table class="table">
@@ -41,4 +49,5 @@
         @endforeach
         </tbody>
     </table>
+    {!! $transaksi->links() !!}
 @endsection

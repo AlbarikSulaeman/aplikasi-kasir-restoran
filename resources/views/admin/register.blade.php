@@ -21,7 +21,7 @@
 @endif
                 <div class="container">
                     <main class="form-register">
-                        <form action="/register" method="POST">
+                        <form action="/register/create" method="POST">
                            @csrf
                             <h1 class="h3 mb-3 fw-normal">Tambahkan User</h1>
 

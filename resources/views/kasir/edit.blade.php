@@ -40,7 +40,17 @@
                 <strong>menu:</strong>
                     <select class="form-control" name="nama_menu">
                         @foreach($menu as $menus)
-                        <option value="{{$menus->nama_menu}}">{{$menus->nama_menu}}</option>
+                        <option value="{{$menus->nama_menu}}">{{$menus->nama_menu}} (RP.{{$menus->harga}})</option>
+                        @endforeach
+                    </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Harga :</strong>
+                    <select class="form-control" name="total_harga">
+                        @foreach($menu as $menus)
+                        <option value="{{$menus->harga}}">RP.{{$menus->harga}} ({{$menus->nama_menu}})</option>
                         @endforeach
                     </select>
             </div>
@@ -49,12 +59,6 @@
             <div class="form-group">
                 <strong>Jumlah:</strong>
                 <input type="number" name="jumlah" class="form-control" placeholder="Jumlah" value="{{$transaksi->jumlah}}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Total:</strong>
-                <input type="number" name="total_harga" class="form-control" placeholder="Total Harga" value="{{$transaksi->total_harga}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

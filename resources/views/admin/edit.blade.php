@@ -7,7 +7,7 @@
                 <h2>Edit</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('register.index') }}"> Back</a>
+                <a class="btn btn-primary" href="/register"> Back</a>
             </div>
         </div>
     </div>
@@ -23,20 +23,20 @@
         </div>
     @endif
         
-    <form action="{{ route('register.update', $user->id) }}" method="POST" enctype="multipart/form-data"> 
+    <form method="POST" enctype="multipart/form-data"> 
         @csrf
 
-        @method('PUT')
+        @method('POST')
         
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-floating">
                     <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control mt-2" id="name" placeholder="Name" value="{{$user->name}}">
+                    <input type="text" name="name" class="form-control mt-2" id="name" placeholder="Name" >
                 </div>
                 <div class="form-floating">
                     <label for="username">Usename</label>
-                    <input type="text" name="username" class="form-control mt-2" id="username" placeholder="Username" value="{{$user->username}}">   
+                    <input type="text" name="username" class="form-control mt-2" id="username" placeholder="Username" >   
                 </div>
                 <div class="form-floating">
                     <label for="password">Password</label>

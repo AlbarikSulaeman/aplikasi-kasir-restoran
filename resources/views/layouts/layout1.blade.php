@@ -45,7 +45,7 @@
       </div>
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="/laporan">
+        <a class="nav-link" href="/laporan?start_date=0001-01-01&end_date=9999-12-31">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Laporan Penjualan</span></a>
       </li>

@@ -17,15 +17,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-       
-    
-        if (Auth::check()) {
-             $cek = Auth::user()->role;
-             if ($cek == 'manajer') {
-                $transaksi = Transaksi::latest()->paginate(10);
-                return view('manajer.laporan',compact('transaksi'))
-                ->with('i', (request()->input('page', 1) - 1) * 10);
-            }
+    {   
             if (Auth::check()) {
                 $cek = Auth::user()->role;
                 if ($cek == 'kasir') {
@@ -68,18 +60,43 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      
+        $pesanan = $request->validate([
             'nama_pelanggan' => 'required',
             'nama_menu' => 'required',
             'jumlah' => 'required',
-            'total_harga' => 'required',
-            'nama_pegawai' => 'required'
+            'nama_pegawai' => 'required',
+            'total_harga' =>'required'
         ]);
-    
-        Transaksi::create($request->all());
+        $pesanan['total_harga'] = $pesanan['total_harga'] * $pesanan['jumlah'];
+        Transaksi::create($pesanan);
      
         return redirect()->route('transaksi.index')
                         ->with('success','Berhasil Menyimpan !');
+    }
+
+    public function show(Request $request)
+    {  
+        $date = $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+            if (Auth::check()) {
+                $cek = Auth::user()->role;
+                if ($cek == 'manajer') {
+                    if ($date['start_date'] || $date['end_date'] != 0) {
+                       $tanggal_awal = $date['start_date'];
+                       $tanggal_akhir = $date['end_date'];
+                       $transaksi = Transaksi::wheredate('created_at','>=',$tanggal_awal)->whereDate('created_at','<=',$tanggal_akhir)->paginate(10);
+                       return view('manajer.laporan',compact('transaksi'))
+                       ->with('i', (request()->input('page', 1) - 1) * 10);
+                   }
+                        
+               }
+               return redirect('/register');
+            }
+            return redirect('/login');
     }
 
     /**
@@ -112,15 +129,15 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, Transaksi $transaksi)
     {
-        $request->validate([
+        $pesanan = $request->validate([
             'nama_pelanggan' => 'required',
             'nama_menu' => 'required',
             'jumlah' => 'required',
-            'total_harga' => 'required',
-            'nama_pegawai' => 'required'
+            'nama_pegawai' => 'required',
+            'total_harga' => 'required'
         ]);
-
-        $transaksi->update($request->all());
+        $pesanan['total_harga'] = $pesanan['total_harga'] * $pesanan['jumlah'];
+        $transaksi->update($pesanan);
 
         return redirect()->route('transaksi.index')
         ->with('success', 'Berhasil Update !');

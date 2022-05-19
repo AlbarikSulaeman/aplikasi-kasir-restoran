@@ -28,7 +28,7 @@
             <th>Nama Pelanggan</th>
             <th>Menu</th>
             <th>Jumlah</th>
-            <th>Total</th>
+            <th>Total Harga</th>
             <th>Nama Pegawai</th>
             <th width="280px">Action</th>
         </tr>
@@ -38,7 +38,7 @@
             <td>{{ $transaksis->nama_pelanggan }}</td>
             <td>{{ $transaksis->nama_menu }}</td>
             <td>{{ $transaksis->jumlah }}</td>
-            <td>{{ $transaksis->total_harga }}</td>
+            <td>RP.{{ $transaksis->total_harga }}</td>
             <td>{{ $transaksis->nama_pegawai }}</td>
             <td>
                 <form action="{{ route('transaksi.destroy',$transaksis->id) }}" method="POST">

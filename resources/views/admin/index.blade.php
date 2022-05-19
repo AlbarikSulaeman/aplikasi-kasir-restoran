@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('register.create') }}"> Tambah Akun</a>
+                <a class="btn btn-success" href="/register/create"> Tambah Akun</a>
             </div>
         </div>
     </div>
@@ -28,6 +28,7 @@
             <th>Nama</th>
             <th>Username</th>
             <th>Role</th>
+            <th width="280px">Action</th>
         </tr>
         @foreach ($user as $users)
         <tr>
@@ -35,6 +36,17 @@
             <td>{{ $users->name }}</td>
             <td>{{ $users->username }}</td>
             <td>{{ $users->role }}</td>
+            <td>
+                <form action="/register/delete/{{$users->id}}" method="POST">
+           
+                    <a class="btn btn-primary" href="/register/edit/{{$users->id}}">Edit</a>
+     
+                    @csrf
+                    @method('DELETE')
+        
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </table>
