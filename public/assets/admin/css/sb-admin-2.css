@@ -46,6 +46,11 @@
 *::after {
   box-sizing: border-box;
 }
+.halamanUtama{
+  background-image: url('../img/kasir2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 html {
   font-family: sans-serif;
@@ -165,7 +170,7 @@ a {
 }
 
 .halamanUtama{
-  background-image: url('../img/perpustakaan1.jpg');
+  background-image: url('../img/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -3559,8 +3564,8 @@ input[type="button"].btn-block {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  /* -webkit-print-color-adjust: exact;
+  color-adjust: exact; */
 }
 
 .custom-control-inline {

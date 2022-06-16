@@ -19,7 +19,7 @@ use App\Http\Controllers\PdfController;
 */
 
 Route::get('/', function () {
-    return view('login.login');
+    return view('welcome');
 });
 
 Route::get('logout', [LoginController::class, 'logout']);
